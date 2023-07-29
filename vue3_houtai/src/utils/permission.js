@@ -2,8 +2,8 @@
  * @Author: 陆小杭 924169430@qq.com
  * @Date: 2023-06-05 23:41:58
  * @LastEditors: 陆小杭 924169430@qq.com
- * @LastEditTime: 2023-06-14 22:05:43
- * @FilePath: \vue3_houtai\finally_project\src\utils\permission.js
+ * @LastEditTime: 2023-07-15 20:50:45
+ * @FilePath: \vue3_houtai\src\utils\permission.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 /**
@@ -23,7 +23,7 @@ let hasGetInfo = false
 router.beforeEach(async (to, from, next) => {
   showLoading()
   const token = getToken()
-  //   没有登录强制跳转登录
+  // 没有登录强制跳转登录
   if (!token && to.path != '/login') {
     toast('请先登录', 'warning')
     return next({ path: '/login' })
@@ -45,7 +45,7 @@ router.beforeEach(async (to, from, next) => {
   }
 
   // 设置页面标题
-  let title = (to.meta.title ? to.meta.title : '') + '陆小杭-后台管理系统'
+  let title = (to.meta.title ? to.meta.title : '') + '-后台管理系统'
   document.title = title
 
   // 跳转到指定路由

@@ -1,3 +1,11 @@
+<!--
+ * @Author: 陆小杭 924169430@qq.com
+ * @Date: 2023-06-07 14:31:53
+ * @LastEditors: 陆小杭 924169430@qq.com
+ * @LastEditTime: 2023-07-17 16:53:59
+ * @FilePath: \vue3_houtai\src\components\FormDrawer.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <el-drawer
     v-model="showDrawer"
@@ -5,6 +13,7 @@
     :size="size"
     :close-on-click-modal="false"
     :destroy-on-close="destroyOnClose"
+    class="px-3"
   >
     <div class="formDrawer">
       <div class="body">
@@ -14,7 +23,7 @@
         <el-button type="primary" @click="submit" :loading="loading">
           {{ confirmText }}
         </el-button>
-        <el-button :loading="loading"> 取消 </el-button>
+        <el-button :loading="loading" @click="close"> 取消 </el-button>
       </div>
     </div>
   </el-drawer>
@@ -84,10 +93,10 @@ import { ref,reactive } from 'vue';
    width: 100%;
    height: 100%;
    position: relative;
-   @apply flex  flex-col
+   @apply flex flex-col
 }
 
-.formDrawer .actions{
+.actions{
     height: 50px;
     @apply mt-auto flex items-center
 }

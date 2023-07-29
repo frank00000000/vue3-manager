@@ -2,8 +2,8 @@
  * @Author: 陆小杭 924169430@qq.com
  * @Date: 2023-06-05 13:50:52
  * @LastEditors: 陆小杭 924169430@qq.com
- * @LastEditTime: 2023-06-15 17:38:53
- * @FilePath: \vue3_houtai\finally_project\src\router\index.js
+ * @LastEditTime: 2023-07-30 00:22:39
+ * @FilePath: \vue3_houtai\src\router\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -124,6 +124,78 @@ const asyncRoutes = [
       title: '优惠券管理',
     },
   },
+  {
+    path: '/manager/list',
+    name: '/manager/list',
+    component: () => import('@/pages/manager/list.vue'),
+    meta: {
+      title: '管理员管理',
+    },
+  },
+  {
+    path: '/access/list',
+    name: '/access/list',
+    component: () => import('@/pages/access/list.vue'),
+    meta: {
+      title: '菜单权限管理',
+    },
+  },
+  {
+    path: '/role/list',
+    name: '/role/list',
+    component: () => import('@/pages/role/list.vue'),
+    meta: {
+      title: '角色管理',
+    },
+  },
+  {
+    path: '/skus/list',
+    name: '/skus/list',
+    component: () => import('@/pages/skus/list.vue'),
+    meta: {
+      title: '规格管理',
+    },
+  },
+  {
+    path: '/level/list',
+    name: '/level/list',
+    component: () => import('@/pages/level/list.vue'),
+    meta: {
+      title: '会员管理',
+    },
+  },
+  {
+    path: '/setting/buy',
+    name: '/setting/buy',
+    component: () => import('@/pages/setting/buy.vue'),
+    meta: {
+      title: '会员等级',
+    },
+  },
+  {
+    path: '/setting/ship',
+    name: '/setting/ship',
+    component: () => import('@/pages/setting/ship.vue'),
+    meta: {
+      title: '物流设置',
+    },
+  },
+  {
+    path: '/distribution/index',
+    name: '/distribution/index',
+    component: () => import('@/pages/distribution/index.vue'),
+    meta: {
+      title: '分销员管理',
+    },
+  },
+  {
+    path: '/distribution/setting',
+    name: '/distribution/setting',
+    component: () => import('@/pages/distribution/setting.vue'),
+    meta: {
+      title: '分销设置',
+    },
+  },
 ]
 
 export const router = createRouter({
@@ -156,6 +228,7 @@ export function addRouter(menus) {
         router.addRoute('Admin', item)
         hasNewRoutes = true
       }
+
       // 子路由数组存在遍历它
       if (e.child && e.child.length > 0) {
         findAndAddRoutesByMenus(e.child)

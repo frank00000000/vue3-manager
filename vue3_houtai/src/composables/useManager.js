@@ -90,7 +90,7 @@ export function useRepassword() {
   }
 
   // enter 回车触发 onSubmit()
-  function onKeyup(e) {
+ /*  function onKeyup(e) {
     if (e.key != 'Enter') {
       return
     }
@@ -104,6 +104,8 @@ export function useRepassword() {
     // 删除事件
     document.removeEventListener('keyup', onKeyup)
   })
+ */
+
   return {
     formDrawerRef,
     openRepassword,

@@ -2,7 +2,7 @@
  * @Author: 陆小杭 924169430@qq.com
  * @Date: 2023-06-05 14:02:31
  * @LastEditors: 陆小杭 924169430@qq.com
- * @LastEditTime: 2023-06-15 14:20:29
+ * @LastEditTime: 2023-06-17 14:13:22
  * @FilePath: \vue3_houtai\finally_project\src\pages\index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -65,9 +65,9 @@
 
     <el-row :gutter="20" class=" mt-4">
       <el-col :span="12" :offset="0">
-        <indexChart />
+        <indexChart v-permission="['getStatistics1,GET']" />
       </el-col>
-      <el-col :span="12" :offset="0">
+      <el-col :span="12" :offset="0" v-permission="['getStatistics2,GET']">
         <indexCard
           title="店铺及商品提示"
           tip="店铺及商品提示"

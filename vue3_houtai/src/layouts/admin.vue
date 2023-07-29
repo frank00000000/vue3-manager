@@ -13,12 +13,12 @@
     </el-header>
     <el-container>
       <el-aside :width="$store.state.asideWidth">
-        <FMenu></FMenu>
+        <FMenu class=".el-aside"></FMenu>
       </el-aside>
       <el-main>
         <div class="main">
           <FTagList></FTagList>
-          <router-view v-slot="{Component}"   >
+          <router-view v-slot="{Component}">
             <transition name="fade">
               <keep-alive :max="3">
                 <component :is="Component"> </component>
@@ -40,7 +40,7 @@ import FTagList from "./components/FTagList.vue"
 <style>
 
 .el-aside{
-  transition: all 0.2s;
+  transition: all 0.5s;
 }
 
 .main{

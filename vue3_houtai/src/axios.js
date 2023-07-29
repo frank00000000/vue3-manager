@@ -2,8 +2,8 @@
  * @Author: 陆小杭 924169430@qq.com
  * @Date: 2023-06-05 16:50:50
  * @LastEditors: 陆小杭 924169430@qq.com
- * @LastEditTime: 2023-06-12 16:43:11
- * @FilePath: \vue3_houtai\finally_project\src\axios.js
+ * @LastEditTime: 2023-07-20 22:22:10
+ * @FilePath: \vue3_houtai\src\axios.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import axios from 'axios'
@@ -12,6 +12,7 @@ import { toast } from '@/utils/message'
 import store from '@/store'
 const Axios = axios.create({
   baseURL: '/api',
+  timeout: 10000,
 })
 
 /**
@@ -41,8 +42,10 @@ Axios.interceptors.request.use(
  * @return { Promise<any> } promise
  */
 Axios.interceptors.response.use(
+  // 请求成功结果返回res.data.data
   function (res) {
-    return res.data.data
+    // 
+    return res.request.responseType == 'blob' ? res.data : res.data.data
   },
   function (error) {
     const msg = error.response.data.msg || '账号或密码错误'

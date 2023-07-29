@@ -53,10 +53,12 @@ function changeTag(tag){
 
 let myChart = null
 onMounted(()=>{
-const chart = document.getElementById("chart")
-// 创建charts
-myChart = echarts.init(chart)
-getData()
+const chartDom = document.getElementById("chart")
+    if(chartDom){
+    // 创建charts
+    myChart = echarts.init(chart)
+    getData()
+    }
 })
 
 onBeforeUnmount(()=>{
@@ -64,7 +66,6 @@ onBeforeUnmount(()=>{
     if(myChart){
         echarts.dispose()
     }
-
 })
 
 
@@ -101,10 +102,10 @@ getStatistics3(current.value).then((res) => {
 let el = ref(null)
 // 获取dom的缩放功能
 useResizeObserver(el, (entries) => {
-
     // charts跟随屏幕变化
-    myChart.resize()
-
+    if(myChart){
+      myChart.resize()
+    }
 })
 </script>
 

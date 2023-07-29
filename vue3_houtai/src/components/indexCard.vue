@@ -7,17 +7,15 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
-  <el-card
-    shadow="hover"
-    :body-style="{ padding: '20px' }"
-    class="h-[200px] border-0 bg-light-400"
-  >
+  <!-- 首页:卡片 -->
+  <el-card shadow="hover" :body-style="{ padding: '20px' }" class="h-[200px] border-0 bg-light-400">
     <template #header>
       <div class="flex justify-between items-center">
         <span class="text-sm"> {{ title}} </span>
         <span>
-          <el-check-tag checked style="margin-right: 8px"
-            >{{tip}}
+          <el-check-tag checked style="margin-right: 8px; 
+           background-color: #e6a23c; color: white;">
+            {{tip}}
           </el-check-tag>
         </span>
       </div>
@@ -27,7 +25,7 @@
       <el-col :span="6" :offset="0" v-for="(item,index) in data" :key="index">
         <el-card shadow="hover">
           <div class="flex flex-col items-center justify-center">
-            <span class="text-xl mb-2">{{item.label}}</span>
+            <span class=" text-sm mb-2">{{item.label}}</span>
             <span class="text-xs text-gray-500">{{ item.value }}</span>
           </div>
         </el-card>

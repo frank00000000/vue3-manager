@@ -2,7 +2,7 @@
  * @Author: 陆小杭 924169430@qq.com
  * @Date: 2023-06-05 22:08:07
  * @LastEditors: 陆小杭 924169430@qq.com
- * @LastEditTime: 2023-06-15 21:50:51
+ * @LastEditTime: 2023-06-26 19:04:52
  * @FilePath: \vue3_houtai\finally_project\src\utils\message.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -13,7 +13,7 @@ import nprogress from 'nprogress'
 export function toast(
   message,
   type = 'success',
-  dangerouslyUseHTMLString = false,
+  dangerouslyUseHTMLString = true,
   duration = 3000
 ) {
   ElNotification({
@@ -32,6 +32,20 @@ export function messageBox(title = '', content = '提示内容', type = 'Warning
     cancelButtonText: '取消',
     confirmButtonText: '确认',
     type,
+  })
+}
+
+/**
+ * @description: input 消息弹出框
+ * @param {*} tip
+ * @param {*} value
+ * @return {*}
+ */
+export function showPrompt(tip, value = '') {
+  return ElMessageBox.prompt(tip, '', {
+    confirmButtonText: '确认',
+    cancelButtonText: '取消',
+    inputValue: value,
   })
 }
 

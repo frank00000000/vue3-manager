@@ -2,26 +2,18 @@
  * @Author: 陆小杭 924169430@qq.com
  * @Date: 2023-06-06 15:40:39
  * @LastEditors: 陆小杭 924169430@qq.com
- * @LastEditTime: 2023-06-14 14:42:03
+ * @LastEditTime: 2023-07-02 22:46:25
  * @FilePath: \vue3_houtai\finally_project\src\layouts\components\FMenu.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 
 <template>
   <div class="f-menu" :style="{width:$store.state.asideWidth}">
-    <el-menu
-      class="el-menu-vertical-demo border-0"
-      @select="handleSelect"
-      :collapse="storeKey"
-      :collapse-transition="false"
-      :default-active="defaultActive"
-      unique-opened
-    >
+    <!-- 页面菜单 -->
+    <el-menu class="el-menu-vertical-demo border-0" @select="handleSelect" :collapse="storeKey"
+      :collapse-transition="false" :default-active="defaultActive" unique-opened>
       <template v-for="(item,index) in asideMenus" :key="index">
-        <el-sub-menu
-          v-if="item.child && item.child.length > 0"
-          :index="item.name"
-        >
+        <el-sub-menu v-if="item.child && item.child.length > 0" :index="item.name">
           <template #title>
             <el-icon>
               <component :is="item.icon"></component>
@@ -29,11 +21,7 @@
             <span>{{item.name}}</span>
           </template>
 
-          <el-menu-item
-            v-for="( List2, index2) in item.child"
-            :key="index2"
-            :index="List2.frontpath"
-          >
+          <el-menu-item v-for="( List2, index2) in item.child" :key="index2" :index="List2.frontpath">
             <el-icon>
               <component :is="List2.icon"></component>
             </el-icon>
@@ -53,8 +41,8 @@
 </template>
 
 <script setup>
-import { ref,reactive,computed } from 'vue';
-import {useRouter,useRoute} from 'vue-router'
+import { ref,reactive,computed} from 'vue';
+import {useRouter,useRoute,onBeforeRouteUpdate} from 'vue-router'
 import {useStore} from 'vuex'
 
 const router = useRouter()
@@ -64,6 +52,12 @@ const path = route.path
 
 //默认选中
 const defaultActive = ref(path)
+
+// 监听路由变化
+onBeforeRouteUpdate((to,form)=>{
+  defaultActive.value = to.path
+})
+
 
 /**
  * @description: 获取菜单
@@ -88,11 +82,15 @@ const handleSelect = (index)=>{
  * @return { Boolean } Boolean
  */
 const storeKey =  computed(()=> !(store.state.asideWidth == "250px"))
+
+
+
+
+
 </script>
 
 <style scoped>
 .f-menu{
-    transition: all 0.5s;
     top:64px;
     left: 0;
     height: 100%;
